@@ -8,13 +8,14 @@ def get_df(n=60):
     df = pd.read_csv(url)
     return df
 
+
 def main():
     if not(os.path.isdir('./test')):
         os.mkdir('./test')
     if not(os.path.isdir('./train')):
         os.mkdir('./train')
     df = get_df()
-    test = df.sample(frac=0.2).drop(['Wine'],axis=1)
+    test = df.sample(frac=0.2)
     train = df.drop(test.index,axis=0)
     test.to_csv('./test/df1.csv')
     train.to_csv('./train/df1.csv')
